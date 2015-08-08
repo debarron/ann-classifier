@@ -1,0 +1,25 @@
+red
+
+entrena_ann
+* conjunto de datos de entrenamiento
+* indice de variable objetivo
+* archivo de configuracion
+	* error deseado
+	* capas
+	* nodos en capa. Ej "23,34"
+
+# SALIDA, archivo binario con:
+número de capas (int)
+vector con los nodos por capa, de longitud del número de capas (int *)
+matrices con los pesos de la red, empieza en la capa #1, con 
+
+clasifica_ann
+
+ann Estructuras para manejar la red.
+
+# 8 Feb 2014
+* Los archivos de input (.h y .c) se eliminaron, ya que en la carpeta io
+  se encuentran las funciones utilizadas para leer los datos.
+  
+* Las funciones de entrenamiento (.h y .c) pasaron a ser parte de ann,
+  no crear tantas dependencias (y complicarme la vida aparentemente).
