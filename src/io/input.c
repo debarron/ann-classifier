@@ -113,7 +113,7 @@ bd_t *input_crear_bd100(FILE *bds, int n){
 		
 		sig_archivo = fopen(sig_dir, "r");
 		if(sig_archivo == NULL){
-			fprintf(stderr, "Error al abrir el archivo %s\n", sig_archivo);
+			fprintf(stderr, "Error al abrir el archivo %s\n", sig_dir);
 			exit(1);
 		}
 		

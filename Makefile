@@ -1,35 +1,11 @@
-CC=gcc
-OBJS= ann.o entrenamiento.o input.o
-OBJS_CLASIFICACION= ann.o input.o
-LIBS= -lm
+.PHONY: build-image run-image build-entrena
 
-entrena-ann: entrena-ann.c $(OBJS)
-	$(CC) -o $@ entrena-ann.c $(OBJS) $(LIBS)
+build-image: 
+	docker image build . --tag annclassifier
 
+run-image:
+	docker run -v "$(PWD)":/ANNClassifier -it --rm annclassifier /bin/bash
 
-clasifica-ann: $(OBJS)
-	$(CC) -o $@ clasifica-ann.c $(OBJS) $(LIBS)
+build-entrena: 
+	$(MAKE) -C src entrena-ann
 
-
-
-input.o: input.c
-	$(CC) -c input.c
-	
-entrenamiento.o: entrenamiento.c
-	$(CC) -c entrenamiento.c
-
-ann.o: ann.c $(LIBS)
-	$(CC) -c ann.c
-
-
-clean:
-	rm *.o
-
-all: entrena-ann clasifica-ann
-
-
-#~ prueba: ann.o entrenamiento.o prueba.c
-	#~ $(CC) -o $@ ann.o entrenamiento.o prueba.c $(LIBS)
-#~ 
-#~ clasifica-ann-p: $(OBJS_CLASIFICACION)
-	#~ $(CC) -o $@ clasifica-ann.c $(OBJS_CLASIFICACION) $(LIBS)
