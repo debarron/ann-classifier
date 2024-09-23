@@ -1,0 +1,18 @@
+red
+
+entrena_ann
+* conjunto de datos de entrenamiento
+* indice de variable objetivo
+* archivo de configuracion
+	* error deseado
+	* capas
+	* nodos en capa. Ej "23,34"
+
+# SALIDA, archivo binario con:
+número de capas (int)
+vector con los nodos por capa, de longitud del número de capas (int *)
+matrices con los pesos de la red, empieza en la capa #1, con 
+
+clasifica_ann
+
+ann Estructuras para manejar la red.
