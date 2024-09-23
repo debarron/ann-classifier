@@ -139,6 +139,29 @@ void entrenamiento_bp(float *lr, ann *red, float *patron){
 	free(r_ant_aux);
 }
 
+
+void train_weights_to_ann(ann *net, float **weights, float **bias){
+	int current_layer, previous_layer, weight_index;
+	int i, j, k;
+	
+	current_layer = 1;
+	previous_layer = ann->entrada->n_nodos;
+
+	memcpy(ann->capas[current_layer-1].bias, bias[current_layer-1], sizeof(float) * ann->capas[current_layer-1].n_nodos);	
+	for(weight_index = 0; weight_index < ann->capas[current_layer-1].n_nodos; weight_index++)
+		memcpy(ann->capas[current_layer-1].pesos[weight_index], pesos[current_layer-1][weight_index], sizeof(float) * previous_layer);
+			
+	
+	for(current_layer = 2; current_layer < ann->n_capas; current_layer++){
+		previous_layer = ann->capas[i-2].n_nodos;
+		memcpy(ann->capas[current_layer-1].bias, bias[current_layer-1], sizeof(float) * ann->capas[current_layer-1].n_nodos);
+		
+		for(weight_index = 0; weight_index < ann->capas[current_layer-1].n_nodos; weight_index++)
+			memcpy(ann->capas[current_layer-1].pesos[weight_index], pesos[current_layer-1][weight_index], sizeof(float) * previous_layer);	
+	}
+
+}
+
 void entrenamiento_pesos_a_red(ann *red, float ***pesos, float **bias){
 	int i, j, k;
 	
